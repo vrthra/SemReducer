@@ -178,7 +178,7 @@ v2 = c2.fuzz('<start>')
 #print(c2.vars)
 #print(c2.choices.ints)
 
-print(repr(v1), repr(v2))
+# print(repr(v1), repr(v2))
 assert v1 == v2
 print(c2.choices.ints)
 
@@ -187,17 +187,21 @@ def causal(ints):
     choices = ChoiceSeq(ints)
     cf = ChoiceFuzzer(grammar, choices)
     try:
-        print(ints)
+        # print(ints)
         v = cf.fuzz('<start>')
         p = pred(v)
-        print(p)
+        #print(p)
+        return p
     except IndexError:
-        print('no')
+        # print('no')
         return False
 
 if pred(v2):
     newv = ddmin(c1.choices.ints, causal)
     choices = ChoiceSeq(newv)
     cf = ChoiceFuzzer(grammar, choices)
-    print('minimal:', cf.fuzz('<start>'))
+    # print(c1.choices.ints)
+    print('original:', c1.fuzz('<start>'), len(c1.choices.ints))
+    print('minimal:', cf.fuzz('<start>'), len(cf.choices.ints))
     print(cf.choices.ints)
+
