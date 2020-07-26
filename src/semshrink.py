@@ -201,7 +201,9 @@ if pred(v2):
     choices = ChoiceSeq(newv)
     cf = ChoiceFuzzer(grammar, choices)
     # print(c1.choices.ints)
-    print('original:', c1.fuzz('<start>'), len(c1.choices.ints))
+    print('original:', v1, len(c1.choices.ints))
     print('minimal:', cf.fuzz('<start>'), len(cf.choices.ints))
     print(cf.choices.ints)
 
+# minimize: 2, 9, 18, 22, 54, 82, 100
+# no minimal: 49, 81
